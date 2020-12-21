@@ -16,13 +16,13 @@
 
     <br/><br/>
 
-    <table>
+    <ul>
         {% for hotel in hotels %}
-        <tr>
-            <td>{{ hotel['name'] }}</td>
-        </tr>
+        
+            <li>{{ hotel['name'] }}</li>
+        
         {% endfor %}
-    </table>
+    </ul>
 </body>
 
 </html>
