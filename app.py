@@ -13,7 +13,7 @@ def index():
         return render_template("index.html", hotels=[])
     else:    
         # POST
-        loc = request.form['search_location']
+        loc = request.form['search_location']   # to-do: form validation
         response = requests.get(url="http://127.0.0.1:5000/api/" + loc)
         results = response.json()
         return render_template("index.html", hotels=results)
