@@ -13,7 +13,7 @@ def index():
         return render_template("index.html", hotels=[])
     else:    
         # POST
-        loc = request.form['location']
+        loc = request.form['search_location']
         response = requests.get(url="http://127.0.0.1:5000/api/" + loc)
         results = response.json()
         return render_template("index.html", hotels=results)
@@ -41,9 +41,9 @@ def scrape_booking(location):
     result_els = browser.find_elements_by_css_selector('div.sr_item')
     for result in result_els:    
         name_el = result.find_element_by_class_name('sr-hotel__name')
-        obj = {}
-        obj['name'] = name_el.text
-        list.append(obj)
+        hotel_obj = {}
+        hotel_obj['name'] = name_el.text
+        list.append(hotel_obj)
         
     # close Chrome session
     browser.quit()
