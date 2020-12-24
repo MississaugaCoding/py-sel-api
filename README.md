@@ -10,6 +10,7 @@ Related reference links:
 - [Json](https://docs.python.org/3/library/json.html)
 - [Requests](https://requests.readthedocs.io/en/master/)
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+- [Python Standard Library](https://docs.python.org/3/library/index.html)
 
 
 -----
