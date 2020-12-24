@@ -2,8 +2,13 @@ from flask import Flask, render_template, request
 
 from selenium import webdriver
 
-import json
-import requests
+import json      # this comes with Python
+import requests  # this does not come with Python and needs to be installed
+
+'''
+Command to see which Python modules are installed: pip freeze
+Docs to check what modules come with Python: https://docs.python.org/3/library/index.html
+'''
 
 app = Flask(__name__)
 
@@ -13,10 +18,14 @@ def index():
         return render_template("index.html", hotels=[])
     else:    
         # POST
-        loc = request.form['search_location']   # to-do: form validation
-        response = requests.get(url="http://127.0.0.1:5000/api/" + loc)
-        results = response.json()
-        return render_template("index.html", hotels=results)
+        loc = request.form['search_location']           
+        if not loc:
+            message = 'You have to type in a search location'
+            return render_template("index.html", hotels=[], message=message)
+        else:
+            response = requests.get(url="http://127.0.0.1:5000/api/" + loc)
+            results = response.json()
+            return render_template("index.html", hotels=results, message='You searched for: '+loc)
 
 
 @app.route('/api/<location>')

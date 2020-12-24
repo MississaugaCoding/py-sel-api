@@ -14,7 +14,11 @@
         <button type="submit">Search</button>
     </form>
 
-    <br/><br/>
+    <p>{{ message }}</p>
+
+    {% if message %}
+    <p>Found {{ hotels|count }} results</p>
+    {% endif %}
 
     <ul>
         {% for hotel in hotels %}
